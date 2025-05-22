@@ -38,7 +38,7 @@ To start the API server, run:
 uvicorn app.main:app --reload
 ```
 
-You can then access the API at `http://127.0.0.1:8000`.
+You can then access the API at `http://127.0.0.1:2577`.
 
 ## Contributing
 
