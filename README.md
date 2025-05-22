@@ -35,7 +35,7 @@ pip install -r requirements.txt
 To start the API server, run:
 
 ```
-uvicorn app.main:app --reload
+python run.py
 ```
 
 You can then access the API at `http://127.0.0.1:2577`.
