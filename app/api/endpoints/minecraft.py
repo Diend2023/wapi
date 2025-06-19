@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from app.services.minecraft.mojang import get_uuid, get_profile
+from app.services.minecraft.server import minecraft_server
 from app.schemas.minecraft import MinecraftResponse
 
 router = APIRouter()
@@ -48,6 +49,25 @@ async def profile(name: str):
         "demo": Player.demo,
         "value": Player.decode_value(),
     }
+    return {
+        "code": 200,
+        "msg": "获取成功",
+        "data": result
+    }
+
+@router.get(
+    "/minecraft/server/{domain}",
+    response_model=MinecraftResponse,
+    status_code=200,
+    tags=["Minecraft"]
+)
+async def server(domain: str):
+    """
+    获取Minecraft服务器状态
+    \nparam domain: 服务器域名或IP，可以使用:带端口
+    \nreturn: 服务器状态
+    """
+    result = minecraft_server(domain)
     return {
         "code": 200,
         "msg": "获取成功",
