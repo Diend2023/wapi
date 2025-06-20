@@ -22,6 +22,7 @@ def status_java_server(host: str, port: int = 25565):
         server = JavaServer(host, port, timeout=2)
         status = server.status()
         status.raw["latency"] = str(int(status.latency)) + " ms"
+        status.raw["online"] = True
         return status.raw
     except Exception as e:
         return {"online": False, "error": str(e)}
@@ -31,8 +32,7 @@ def status_bedrock_server(host: str, port: int = 19132):
         server = BedrockServer(host, port, timeout=2)
         status = server.status()
         status.raw["latency"] = str(int(status.latency)) + " ms"
+        status.raw["online"] = True
         return status.raw
     except Exception as e:
         return {"online": False, "error": str(e)}
-
-print(minecraft_server("1rzs.com"))
