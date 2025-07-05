@@ -20,19 +20,20 @@ headers = {
     'sec-fetch-site': 'same-origin',
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 Edg/132.0.0.0',
     'x-requested-with': 'XMLHttpRequest',
+    'Connection': 'close',
 }
 
-def _warmup_connection(url):
-    """预热连接，消耗掉第一次失败请求"""
-    try:
-        session.post(url, headers=headers, timeout=1)
-    except:
-        pass  # 忽略预热请求的错误
+# def _warmup_connection(url):
+#     """预热连接，消耗掉第一次失败请求"""
+#     try:
+#         session.post(url, headers=headers, timeout=1)
+#     except:
+#         pass  # 忽略预热请求的错误
 
 def get_built_ver():
     try:
-        url = 'https://www.kkrb725.com/getMenu'
-        _warmup_connection(url)  # 预热连接，消耗掉第一次失败请求
+        url = 'https://www.kkrb.net/getMenu'
+        # _warmup_connection(url)  # 预热连接，消耗掉第一次失败请求
         response = session.post(url, headers=headers, timeout=10)
         response.raise_for_status()
         data = response.json()
@@ -41,12 +42,12 @@ def get_built_ver():
         print("get_built_ver 出错:", e)
         return None
 
-def get_ovd_data():
+async def get_ovd_data():
     try:
         built_ver = get_built_ver()
         if not built_ver:
             raise Exception("无法获取 built_ver")
-        url = 'https://www.kkrb725.com/getOVData'
+        url = 'https://www.kkrb.net/getOVData'
         response = session.post(url, data={'version': built_ver}, headers=headers, timeout=10)
         response.raise_for_status()
         data = response.json()
