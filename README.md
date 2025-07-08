@@ -2,7 +2,7 @@
 
 This project is a private API server built using FastAPI. It serves as a template for creating a structured and organized API application.
 
-## Project Structure
+<!-- ## Project Structure
 
 ```
 private-api-server
@@ -20,7 +20,7 @@ private-api-server
 │       └── __init__.py        # Defines data schemas for request and response validation.
 ├── requirements.txt            # Lists the Python dependencies required for the project.
 └── README.md                   # Documentation and instructions for the project.
-```
+``` -->
 
 ## Installation
 
