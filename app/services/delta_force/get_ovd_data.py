@@ -103,7 +103,7 @@ def get_built_ver():
         print("get_built_ver 出错:", e)
         return None
 
-def get_ovd_data():
+async def get_ovd_data():
     try:
         built_ver = get_built_ver()
         if not built_ver:
