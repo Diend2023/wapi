@@ -1,7 +1,7 @@
 import os
 from fastapi import FastAPI
 from fastapi.openapi.docs import get_swagger_ui_html, get_redoc_html, get_swagger_ui_oauth2_redirect_html
-from app.api.endpoints import test, delta_force, minecraft
+from app.api.endpoints import test, delta_force, minecraft, hxwz
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 
@@ -11,6 +11,7 @@ static_dir = os.path.join(os.path.dirname(__file__), "static")
 app.include_router(test.router)
 app.include_router(delta_force.router)
 app.include_router(minecraft.router)
+app.include_router(hxwz.router)
 app.mount("/static", StaticFiles(directory=static_dir), name="static")
 
 
